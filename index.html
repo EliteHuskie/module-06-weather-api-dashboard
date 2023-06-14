@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Weather Dashboard</title>
+  <link rel="stylesheet" href="./assets/css/reset.css" />
+  <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+</head>
+<body>
+  <header class="header">
+    <h1>Weather Dashboard</h1>
+  </header>
+  <section>
+    <h2 class="main-heading">Search for a city:</h2>
+    <form id="search-form" action="/search" method="GET">
+      <input id="city-input" type="text" name="city" placeholder="Enter a city">
+      <button type="submit">Search</button>
+    </form>
+    <section id="history-container">
+      <h2>Search History</h2>
+      <ul id="history-list"></ul>
+    </section>
+    <button id="clear-history-button">Clear History</button>
+    <section id="current-conditions">
+        <h2>Current Conditions</h2>
+        <ul id="current-conditions-list"></ul>
+      </section>
+      <section id="five-day-forecast">
+        <h2>Five-Day Forecast</h2>
+        <section id="five-day-forecast-container">
+          <ul id="five-day-forecast-list"></ul>
+        </section>
+      </section>
+  </section>
+  <script src="./assets/js/script.js"></script>
+</body>
+</html>
