@@ -43,7 +43,7 @@ function searchCity(city) {
     .then(([currentConditionsData, fiveDayForecastData, cityName]) => {
       console.log('Current Conditions Data:', currentConditionsData);
       console.log('Five-Day Forecast Data:', fiveDayForecastData);
-    /* Error conditions */
+      /* Error conditions */
       if (!currentConditionsData || !currentConditionsData.main || !currentConditionsData.main.temp || !currentConditionsData.weather || !currentConditionsData.weather[0]) {
         throw new Error('Invalid current conditions data');
       }
@@ -58,6 +58,7 @@ function searchCity(city) {
       currentConditionsList.innerHTML = '';
 
       const currentConditionsItem = document.createElement('li');
+      currentConditionsItem.classList.add('day-box'); // Add the 'day-box' class
       currentConditionsItem.innerHTML = `<strong>City:</strong> ${cityName}<br>
                                           <strong>Date:</strong> ${new Date().toLocaleDateString()}<br>
                                           <img src="${iconUrl}" alt="${weatherDescription}" />
@@ -81,42 +82,42 @@ function searchCity(city) {
 
         // Skip the current day and past days
         if (forecastDate <= currentDate) {
-            continue;
-          }
-  
-          // Skip duplicate dates
-          if (uniqueDates.has(forecastDate)) {
-            continue;
-          }
-  
-          uniqueDates.add(forecastDate);
-          // Variables needed for data to display
-          const formattedDate = date.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
-          const temperature = day.main.temp;
-          const weatherDescription = day.weather[0].description;
-          const iconCode = day.weather[0].icon;
-          const iconUrl = `https://openweathermap.org/img/w/${iconCode}.png`;
-          const windSpeed = day.wind.speed;
-          const humidity = day.main.humidity;
-  
-          const forecastItem = document.createElement('li');
-          forecastItem.classList.add('day-box');
-          forecastItem.innerHTML = `<img src="${iconUrl}" alt="${weatherDescription}" />
+          continue;
+        }
+
+        // Skip duplicate dates
+        if (uniqueDates.has(forecastDate)) {
+          continue;
+        }
+
+        uniqueDates.add(forecastDate);
+        // Variables needed for data to display
+        const formattedDate = date.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
+        const temperature = day.main.temp;
+        const weatherDescription = day.weather[0].description;
+        const iconCode = day.weather[0].icon;
+        const iconUrl = `https://openweathermap.org/img/w/${iconCode}.png`;
+        const windSpeed = day.wind.speed;
+        const humidity = day.main.humidity;
+
+        const forecastItem = document.createElement('li');
+        forecastItem.classList.add('day-box');
+        forecastItem.innerHTML = `<img src="${iconUrl}" alt="${weatherDescription}" />
                                     <strong>${formattedDate}</strong><br>
                                     <span>${weatherDescription}</span><br>
                                     <strong>Temperature:</strong> ${temperature}°C<br>
                                     <strong>Wind Speed:</strong> ${windSpeed} m/s<br>
                                     <strong>Humidity:</strong> ${humidity}%`;
-  
-          fiveDayForecastList.appendChild(forecastItem);
-  
-          dayCount++;
-  
-          // Stop iterating once you reach 5 days
-          if (dayCount >= 5) {
-            break;
-          }
+
+        fiveDayForecastList.appendChild(forecastItem);
+
+        dayCount++;
+
+        // Stop iterating once you reach 5 days
+        if (dayCount >= 5) {
+          break;
         }
+      }
 
       // Save search history
       historyData.unshift(city);
@@ -130,16 +131,19 @@ function searchCity(city) {
       console.error('Error fetching weather data:', error);
     });
 }
+
 // Clear History event listener
 clearHistoryButton.addEventListener('click', function() {
   historyData.length = 0;
   localStorage.removeItem('searchHistory');
   updateSearchHistory();
 });
+
 // Function for updating Search history
 function updateSearchHistory() {
   historyList.innerHTML = '';
-  historyData.forEach(city => {
+  const uniqueHistoryData = [...new Set(historyData)]; // Remove duplicates from historyData
+  uniqueHistoryData.forEach(city => {
     const historyItem = document.createElement('li');
     historyItem.textContent = city;
     historyItem.addEventListener('click', () => {
