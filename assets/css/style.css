@@ -35,6 +35,8 @@
     border: 1px solid #ccc;
     padding: 20px;
     margin-right: 1640px;
+    height: 200px; /* Add a fixed height */
+    overflow-y: auto; /* Enable vertical scrolling */
   }
   /* Form class for page */
   form {
@@ -79,15 +81,33 @@
   /* Current conditons that displays for weather */
   #current-conditions {
     position: relative;
-    top: -185px;
+    top: -175px;
     margin-left: 885px;
+  }
+  /* Current conditions list */
+  #current-conditions-list {
+    display: flex;
+    justify-content: space-between
+  }
+  /* Current conditions container */
+  #current-conditions-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
   }
   /* 5 day weather section */
   #five-day-forecast {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 10px;
+    margin-top: -50px;
+  }
+  /* 5 day forecast list */
+  #five-day-forecast-list {
+    display: flex;
+    justify-content: space-between
   }
   /* Container for 5 day weather that displays */
   #five-day-forecast-container {
