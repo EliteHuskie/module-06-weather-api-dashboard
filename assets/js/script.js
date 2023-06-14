@@ -1,5 +1,6 @@
+require('dotenv').config();
 /* Variables used for weather dashboard application */
-const apiKey = '7bd3d1902bc235922776583ac0adc2ac';
+const apiKey = process.env.OPEN_WEATHER_API_KEY;
 const searchForm = document.getElementById('search-form');
 const cityInput = document.getElementById('city-input');
 const currentConditionsList = document.getElementById('current-conditions-list');
@@ -38,6 +39,7 @@ function searchCity(city) {
         throw new Error('City not found');
       }
     })
+
     /* Console loggging for Current Conditions + Five Day Forecast */
     .then(([currentConditionsData, fiveDayForecastData, cityName]) => {
       console.log('Current Conditions Data:', currentConditionsData);
@@ -46,3 +48,34 @@ function searchCity(city) {
       if (!currentConditionsData || !currentConditionsData.main || !currentConditionsData.main.temp || !currentConditionsData.weather || !currentConditionsData.weather[0]) {
         throw new Error('Invalid current conditions data');
       }
+      /* Variables needed for displaying data */
+      const temperature = currentConditionsData.main.temp;
+      const weatherDescription = currentConditionsData.weather[0].description;
+      const iconCode = currentConditionsData.weather[0].icon;
+      const iconUrl = `https://openweathermap.org/img/w/${iconCode}.png`;
+      const windSpeed = currentConditionsData.wind.speed;
+      const humidity = currentConditionsData.main.humidity;
+      /* Current Conditions List */
+      currentConditionsList.innerHTML = '';
+
+      const currentConditionsItem = document.createElement('li');
+      currentConditionsItem.innerHTML = `<strong>City:</strong> ${cityName}<br>
+                                          <strong>Date:</strong> ${new Date().toLocaleDateString()}<br>
+                                          <img src="${iconUrl}" alt="${weatherDescription}" />
+                                          <strong>Temperature:</strong> ${temperature}°C, ${weatherDescription}<br>
+                                          <strong>Wind Speed:</strong> ${windSpeed} m/s<br>
+                                          <strong>Humidity:</strong> ${humidity}%`;
+
+      currentConditionsList.appendChild(currentConditionsItem);
+
+      const forecastList = fiveDayForecastData.list || []; // Assign forecastList correctly
+      /* Five Days Forecast List */
+      fiveDayForecastList.innerHTML = ''; // Clear previous forecast content
+
+      let currentDate = new Date().setHours(0, 0, 0, 0); // Get current date without time
+      let uniqueDates = new Set(); // Set to store unique forecast dates
+      let dayCount = 0; // Counter for the number of forecasted days
+
+      for (const day of forecastList) {
+        const date = new Date(day.dt * 1000);
+        const forecastDate = new Date(date.getFullYear(), date.getMonth(), date.getDate()).setHours(0, 0, 0, 0);
