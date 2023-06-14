@@ -1,0 +1,117 @@
+/* style.css - is what determines the 'style' of the website and pages that are linked */
+
+/* Applies to all */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  /* Body of webpage */
+  body {
+    background-color: white;
+  }
+  /* Header class */
+  .header {
+    padding: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: blue;
+    color: #F4FDFF;
+  }
+  /* h1 in header of webpage */
+  .header h1 {
+    display: inline-block;
+    font-size: 30px;
+    margin-left: 800px;
+  }
+  /* Main heading of webpage */
+  .main-heading {
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    font-size: 20px;
+  }
+  /* History container for webpage */
+  #history-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-right: 1640px;
+  }
+  /* Form class for page */
+  form {
+    display: flex;
+    align-items: center;
+  }
+  /* Text input for form */
+  input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  /* Submit button for form */
+  button[type="submit"] {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  /* Submit button for form when hovering */
+  button[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  /* Clear history button class */
+  #clear-history-button {
+    padding: 10px 94px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  /* Clear history button when hovering */
+  #clear-history-button:hover {
+    background-color: #45a049;
+  }
+  /* Current conditons that displays for weather */
+  #current-conditions {
+    position: relative;
+    top: -185px;
+    margin-left: 885px;
+  }
+  /* 5 day weather section */
+  #five-day-forecast {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+  /* Container for 5 day weather that displays */
+  #five-day-forecast-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  /* Boxes for 5 day weather */
+  .day-box {
+    flex-basis: 18%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  /* Large smartphones */
+  @media (max-width: 768px) {
+    .day-box {
+      flex-basis: 30%;
+    }
+  }
+  /* Small smartphones */
+  @media (max-width: 576px) {
+    .day-box {
+      flex-basis: 100%;
+    }
+  }  
