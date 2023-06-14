@@ -118,3 +118,36 @@ function searchCity(city) {
             break;
           }
         }
+
+      // Save search history
+      historyData.unshift(city);
+      localStorage.setItem('searchHistory', JSON.stringify(historyData));
+      updateSearchHistory();
+
+      // Clear input field
+      cityInput.value = '';
+    })
+    .catch(error => {
+      console.error('Error fetching weather data:', error);
+    });
+}
+// Clear History event listener
+clearHistoryButton.addEventListener('click', function() {
+  historyData.length = 0;
+  localStorage.removeItem('searchHistory');
+  updateSearchHistory();
+});
+// Function for updating Search history
+function updateSearchHistory() {
+  historyList.innerHTML = '';
+  historyData.forEach(city => {
+    const historyItem = document.createElement('li');
+    historyItem.textContent = city;
+    historyItem.addEventListener('click', () => {
+      searchCity(city);
+    });
+    historyList.appendChild(historyItem);
+  });
+}
+
+updateSearchHistory();
