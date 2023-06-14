@@ -1,6 +1,5 @@
-require('dotenv').config();
 /* Variables used for weather dashboard application */
-const apiKey = process.env.OPEN_WEATHER_API_KEY;
+const apiKey = '7bd3d1902bc235922776583ac0adc2ac'
 const searchForm = document.getElementById('search-form');
 const cityInput = document.getElementById('city-input');
 const currentConditionsList = document.getElementById('current-conditions-list');
