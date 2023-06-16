@@ -19,9 +19,10 @@
   }
   /* h1 in header of webpage */
   .header h1 {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-size: 30px;
-    margin-left: 800px;
   }
   /* Main heading of webpage */
   .main-heading {
@@ -34,8 +35,12 @@
   #history-container {
     border: 1px solid #ccc;
     padding: 20px;
-    margin-right: 1640px;
-  }
+    margin-right: 10px;
+    width: 60%;
+    max-width: 280px;
+    height: 200px; 
+    overflow-y: auto;
+  }  
   /* Form class for page */
   form {
     display: flex;
@@ -78,16 +83,36 @@
   }
   /* Current conditons that displays for weather */
   #current-conditions {
-    position: relative;
-    top: -185px;
-    margin-left: 885px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -300px;
+  }
+  /* Current conditions list */
+  #current-conditions-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  /* Current conditions container */
+  #current-conditions-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
   }
   /* 5 day weather section */
   #five-day-forecast {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 150px;
+  }
+  /* 5 day forecast list */
+  #five-day-forecast-list {
+    display: flex;
+    justify-content: space-between
   }
   /* Container for 5 day weather that displays */
   #five-day-forecast-container {
