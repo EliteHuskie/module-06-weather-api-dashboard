@@ -1,4 +1,4 @@
-/* style.css - is what determines the 'style' of the website and pages that are linked */
+/* style.css - determines the 'style' of the website and pages that are linked */
 
 /* Applies to all */
 * {
@@ -6,10 +6,16 @@
   padding: 0;
   margin: 0;
 }
+
 /* Body of webpage */
 body {
   background-color: white;
+  margin: 0;
+  padding-bottom: 60px;
+  min-height: 100vh;
+  position: relative;
 }
+
 /* Header class */
 .header {
   padding: 20px;
@@ -17,6 +23,7 @@ body {
   background-color: blue;
   color: #F4FDFF;
 }
+
 /* h1 in header of webpage */
 .header h1 {
   display: flex;
@@ -24,6 +31,7 @@ body {
   align-items: center;
   font-size: 30px;
 }
+
 /* Main heading of webpage */
 .main-heading {
   padding-top: 20px;
@@ -31,6 +39,7 @@ body {
   padding-bottom: 20px;
   font-size: 20px;
 }
+
 /* History container for webpage */
 #history-container {
   border: 1px solid #ccc;
@@ -39,14 +48,16 @@ body {
   font-size: 20px;
   width: 60%;
   max-width: 280px;
-  height: 200px; 
+  height: 200px;
   overflow-y: auto;
-}  
+}
+
 /* Form class for page */
 form {
   display: flex;
   align-items: center;
 }
+
 /* Text input for form */
 input[type="text"] {
   padding: 10px;
@@ -54,6 +65,7 @@ input[type="text"] {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+
 /* Submit button for form */
 button[type="submit"] {
   padding: 10px 20px;
@@ -64,10 +76,12 @@ button[type="submit"] {
   border-radius: 4px;
   cursor: pointer;
 }
+
 /* Submit button for form when hovering */
 button[type="submit"]:hover {
   background-color: #45a049;
 }
+
 /* Clear history button class */
 #clear-history-button {
   padding: 10px 94px;
@@ -78,11 +92,13 @@ button[type="submit"]:hover {
   border-radius: 4px;
   cursor: pointer;
 }
+
 /* Clear history button when hovering */
 #clear-history-button:hover {
   background-color: #45a049;
 }
-/* Current conditons that displays for weather */
+
+/* Current conditions that display for weather */
 #current-conditions {
   display: flex;
   flex-direction: column;
@@ -90,6 +106,7 @@ button[type="submit"]:hover {
   font-size: 20px;
   margin-top: -300px;
 }
+
 /* Current conditions list */
 #current-conditions-list {
   display: flex;
@@ -97,6 +114,7 @@ button[type="submit"]:hover {
   align-items: center;
   margin-top: 20px;
 }
+
 /* Current conditions container */
 #current-conditions-container {
   display: flex;
@@ -105,7 +123,8 @@ button[type="submit"]:hover {
   align-items: center;
   margin-top: 20px;
 }
-/* 5 day weather section */
+
+/* 5-day weather section */
 #five-day-forecast {
   display: flex;
   flex-direction: column;
@@ -113,45 +132,74 @@ button[type="submit"]:hover {
   font-size: 20px;
   margin-top: 75px;
 }
-/* 5 day forecast list */
+
+/* 5-day forecast list */
 #five-day-forecast-list {
   display: flex;
-  justify-content: space-between
+  justify-content: space-between;
 }
-/* Container for 5 day weather that displays */
+
+/* Container for 5-day weather that displays */
 #five-day-forecast-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 20px;
 }
-/* Boxes for 5 day weather */
+
+/* Boxes for 5-day weather */
 .day-box {
   flex-basis: 18%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
+
+/* Footer at bottom of page */
+.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: blue;
+  color: white;
+  text-align: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  padding-top: 20px;
+}
+
+/* Footer at bottom of page for the heading */
+.footer h2 {
+  font-size: 20px;
+}
+
 /* Large smartphones */
-@media (max-width: 960px) {
+@media (max-width: 1000px) {
   .day-box {
     flex-basis: 30%;
   }
-  
+
   #current-conditions {
     margin-top: 20px;
   }
-  
+
   #history-container {
     margin-right: 20px;
     width: calc(100% - 40px);
   }
-  
+
   #five-day-forecast-list {
     flex-direction: column;
     align-items: stretch;
+    padding-bottom: 20px;
+    margin-top: auto;
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    gap: 20px;
   }
 }
+
 /* Small smartphones */
 @media (max-width: 576px) {
   .day-box {
@@ -161,7 +209,7 @@ button[type="submit"]:hover {
   #current-conditions {
     margin-top: 20px;
   }
-  
+
   #history-container {
     margin-right: 0;
     width: 100%;
